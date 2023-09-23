@@ -10,8 +10,8 @@ The last part will be betting. Since we need a websocket of a live count of play
 ![Screenshot 2023-09-22 210902](https://github.com/michaelharris1525/StartUpTourneyBracket/assets/144944137/77f2173f-80c8-44c8-8f63-d8d95000271a) 
 
 ## Technologies
-HTML - Uses correct HTML structure for application. Two HTML pages. One for login and one for voting. Hyperlinks to choice artifact.
-CSS - Used to Design the website
+HTML - Uses correct HTML structure for application. Two HTML pages. One for login and one for the tournament.
+CSS - Used to Design the website and hopefully make the bracket look sick. 
 JavaScript - Provides login, choice display, applying votes, display other users votes
 Service - Backend service with endpoints for: login and submitting or counting votes
 DB - Store the scores of the game based on User
