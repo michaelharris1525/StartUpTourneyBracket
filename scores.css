@@ -1,0 +1,25 @@
+footer {
+    flex: 0 30px;
+    padding-top: 10cm;
+    background-color:  rgb(188, 188, 233)
+  }
+header {
+    flex: 0 80px;
+    justify-content: center;
+    border-style: groove;
+    background-color: rgb(188, 188, 233)
+  }
+  table, th, td {
+    border: 1px solid;
+
+  }
+  table {
+    width: 100%;
+    border-spacing:.2cm;
+  }
+  th {
+    height: 100px;
+  }
+/* th, td{
+    border-bottom: 1px solid #ddd;
+} */

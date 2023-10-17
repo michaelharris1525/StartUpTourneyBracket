@@ -11,3 +11,15 @@
     My name is Michael Harris and I accidentally deleted the orignal respository for when we 1st branded our 
         idea for the first 100 point assignment we had. This is a recreation of it, as well as the full website 
         i will be changing throughout the semester. That is why I am missing a ton of other stuff in this README.md, that'll I'll have to go back and change and rewrite everything. With an image of the tourney bracket I want it to look like. 
+
+#StartupCSS
+
+Header-
+
+
+
+Footer-
+
+
+
+Main- 
