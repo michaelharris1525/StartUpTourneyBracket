@@ -27,34 +27,93 @@
       <hr />
     </header>
     <body>
-        <div class="chat-box" id="chat-box">
-            <!-- Messages will be displayed here -->
-        </div>
-         <br />
-         <br />
-         <br />
-         <br />
-         <br /> 
-         <br /> 
-         <br />
-        <input type="text" id="message" placeholder="Type a message">
-        <button onclick="sendMessage()">send to chat</button>
+        <form name = "formId0" class="formId0"> 
+            <label class="number">Current Battle Mode First To</label>
+            <select name="Result0" id="Result0" class="ResulT00 ResulT0">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select> <label class="number"> Wins</label>
+        </form>
 
-      <!-- More formatting with old style HTML -->
+    <!-- bootstrap: Chat Box -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+        
+    <!-- Chat box ----------------------------------------------------------------------------------------------------->
+    <div class="container">
+        <button class="btn btn-info btn-chat" type="button" onclick="openChat()">Chat</button>
+    
+        <div class="chatbox" id="chatbox">
+            <h2>Message</h2>
+            <form class="form-container">
+              <textarea type="text" placeholder="Type Text.." name="msg" required=""></textarea>
+              <button type="submit" class="btn btn-info btn-lg btn-send">Send</button>
+              <button type="button" class="btn btn-danger btn-lg btn-close" onclick="closeChat()">Close</button>
+            </form>
+          </div>
+          <script type="text/javascript">
+            function openChat() {
+              document.getElementById('chatbox').style.display='block';
+              $('.btn-chat').hide();
+            }
+            function closeChat() {
+              document.getElementById('chatbox').style.display='none';
+              $('.btn-chat').show();
+            }
+            $('form').submit(function () {
+              var text=$(this).find("textarea[name='msg']").val();
+        
+              alert(text);
+            });
+          </script>
       <br />
-       <br />
-
       <br />
-
-      <div>
-        <button>Reset</button>
-      </div>
-
+      <br />
       <br />
     </body>
+    <!-- Braket starts ----------------------------------------------------------------------------------------------------------------->
+    <!-- <fieldset>
+        <legend>Local Storage</legend>
+        <input id="inpkey" type="text" placeholder="real name:">
+        <input id="inpvalue" type="text" placeholder="gamertag">
+        <button type="button" id="btnInsert">Insert Data</button>
+    </fieldset>
+    <fieldset>
+        <legend>Output</legend>
+        <div class="lsOutput"></div>
+        "
+    </fieldset>
 
+    <script type="text/javascript">
+    const inpKey = document.getElementById("inpKey");                  
+    const inpValue = document.getElementById("inpValue");
+    const btnInsert = document.getElementById("btnInsert");
+    const lsOutput = document.getElementById("btnInsert");
+
+    btnInsert.onclick = function() {
+        const key = inpKey.value;
+        const value = inpValue.value;
+        console.log(key);
+        console.log(value);
+
+        if (key && value) {
+            localStorage.setItem(key, value);
+            location.reload();
+        }
+        for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            const value = localStorage.getItem(key);
+            lsOutput.innerHTML += '${key}: ${value} <br />';
+        }
+    }
+    </script> -->
+<!--part 1: Branch 1 going to contain everything 1x of this----------------------------------------------------------------->
       <main>
-      <div class="Container"> <!--part 1: Branch 1 going to contain everything 1x of this-->
+      <div class="Container"> 
         <!-------------------------1-------------------------------------------->
             <div class="Branch_1"><!--Part 2: The part which contain each 4 of the matches in this branch.-->
                 
@@ -62,8 +121,8 @@
                 <div class="Object_1"> <!--Part 3: Name of player & Result 4x of this in this branch-->
     
                     <div><select class="Name" type="text" id="Player1">
-                        <option value="0">player1name</option>
-                        <option value="1">player2name</option>
+                        <!-- <option value="0">player1name</option>
+                        <option value="1">player2name</option> -->
                     </select></div><!--Part 4: Name of player 8x of this in this branch-->
     
                     <div> <!--Part 4: Results 8x of this-->
@@ -73,14 +132,17 @@
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
     
                     </select>
                     </form>
                     </div>
-    
+            
+                    
                     <div><select class="Name" type="text" id="Player2">
-                        <option value="0">player2name</option>
-                        <option value="1">player1name</option>
+                        <!-- <option value="0">player2name</option>
+                        <option value="1">player1name</option> -->
                     </select>
                     </div><!--Part 4: Name of player 8x of this-->
     
@@ -91,6 +153,8 @@
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
                     </select>
                     </form>
                     </div>
@@ -101,10 +165,10 @@
                 <div class="Match">
                 <div class="Object_1"> <!--Part 3: Name of player & Result 4x of this in this branch-->
     
-                    <div><select class="Name" type="text" id="Player3">
-                        <option value="0">player3name</option>
-                        <option value="1">player4name</option>
-                    </select>
+                    <div>
+                        <select class="Name" type="text" id="Player3">
+                        
+                        </select>
                     </div><!--Part 4: Name of player 8x of this in this branch-->
     
                     <div> <!--Part 4: Results 8x of this-->
@@ -114,14 +178,16 @@
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
     
                     </select>
                     </form>
                     </div>
     
                     <div><select class="Name" type="text" id="Player4">
-                        <option value="0">player4name</option>
-                        <option value="1">player3name</option>
+                        <!-- <option value="0">player4name</option>
+                        <option value="1">player3name</option> -->
                     </select></div><!--Part 4: Name of player 8x of this in this branch-->
     
                     <div> <!--Part 4: Results 8x of this-->
@@ -131,6 +197,8 @@
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
     
                     </select>
                     </form>
@@ -142,8 +210,8 @@
     <div class="Object_1"> <!--Part 3: Name of player & Result 4x of this in this branch-->
     
         <div><select class="Name" type="text" id="Player5">
-            <option value="0">player5name</option>
-            <option value="1">player6name</option>
+            <!-- <option value="0">player5name</option>
+            <option value="1">player6name</option> -->
         </select></div><!--Part 4: Name of player 8x of this in this branch-->
     
         <div> <!--Part 4: Results 8x of this-->
@@ -153,14 +221,16 @@
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
     
         </select>
         </form>
         </div>
     
         <div><select class="Name" type="text" id="Player6">
-            <option value="0">player6name</option>
-            <option value="1">player5name</option>
+            <!-- <option value="0">player6name</option>
+            <option value="1">player5name</option> -->
         </select></div><!--Part 4: Name of player 8x of this in this branch-->
     
         <div> <!--Part 4: Results 8x of this-->
@@ -170,6 +240,8 @@
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
     
         </select>
         </form>
@@ -181,8 +253,8 @@
     <div class="Object_1"> <!--Part 3: Name of player & Result 4x of this in this branch-->
     
         <div><select class="Name" type="text" id="Player7">
-            <option value="0">player7name</option>
-            <option value="1">player8name</option>
+            <!-- <option value="0">player7name</option>
+            <option value="1">player8name</option> -->
         </select></div><!--Part 4: Name of player 8x of this in this branch-->
     
         <div> <!--Part 4: Results 8x of this-->
@@ -192,14 +264,16 @@
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
     
         </select>
         </form>
         </div>
     
         <div><select class="Name" type="text" id="Player8">
-            <option value="0">player8name</option>
-            <option value="1">player7name</option>
+            <!-- <option value="0">player8name</option>
+            <option value="1">player7name</option> -->
         </select></div><!--Part 4: Name of player 8x of this in this branch-->
     
         <div> <!--Part 4: Results 8x of this-->
@@ -209,6 +283,8 @@
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
     
         </select>
         </form>
@@ -234,6 +310,8 @@
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
     
             </select>
             </form>
@@ -248,6 +326,8 @@
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
     
             </select>
             </form>
@@ -267,6 +347,8 @@
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
     
             </select>
             </form>
@@ -281,6 +363,8 @@
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
     
             </select>
             </form>
@@ -307,6 +391,8 @@
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
     
             </select>
             </form>
@@ -321,6 +407,8 @@
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
     
             </select>
             </form>
@@ -336,9 +424,16 @@
     </main>
 
     <footer>
+        <div>
+            <div class="Link_Style">
+                <label><a target="_blank" class="First" href="https://docs.google.com/spreadsheets/d/1ng4yec1mVko9zBp7ko-t1w9SjSmmPsSU9N_rNzenN3g/edit?usp=sharing">Write Your Names Here</a></label>
+            </div>
+           
+        </div>
       <hr />
       <span class="text-reset">Created By: Michael Harris</span>
       <br />
       <a href="https://github.com/webprogramming260/simon-html">GitHub</a>
     </footer>
+    <script defer src="play.js"></script>
 </html>

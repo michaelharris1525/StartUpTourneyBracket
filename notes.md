@@ -11,3 +11,8 @@ I'm just learning a bit of the HTML, I learned a bit about classes and div and h
 4 new css files for "play, scores, styles, and about".
 
 Modified HTML file for play in order for it to contain the players. Used flex to center some of my content around. Add an image to the background of the main and about page. I may modify the page as time goes by, because I'm still unsatisfied with it. Used footers, main, nav, and edited everything i could onto the page. Will most definitely be fixing more and more of it throughout the semester. Added an actual table to both play and the scores page, and added more bars for the players. 
+
+(REQUIRED STARTUP JAVASCRIPT)
+For Play.js and play.html
+Modified the HTML to change the chatbox since it didn't do anything but look like a chat box. Created a way to open and close the chat for the user and allowed the user's to send messages. So far it only displays the message very similar to an error message but will work on making it more user friendly and possibly fun to use. Made the user's be able to write their own names by linking a google spreadsheet that ties with the options of names or players you can take. Created a way to determine who the winner is. Just has to equal the amount of wins of whoever gets to that limit.
+There are still some problems like adding the names of the players into the local storage and saving it into the scoring page. That is the only problem with this page for now, but will get it fixed hopefully soon.
