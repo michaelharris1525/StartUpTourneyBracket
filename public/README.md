@@ -29,3 +29,4 @@ There are still some problems like adding the names of the players into the loca
 
 (REQUIRED STARTUP SERVICES)
 This deliverable demonstrates converting the JavaScript application into a web application by implementing a web service that listens on a network port for HTTP requests.
+Able to receive request by using both app and requests. Using Bcrypt to have more security with logging in. You get the requests from the user based on the password and username of the user, but it is saved the first time. if you try using a different one, it should not work, because of the ability to save and bcrypt in the index.js file for reading the logins of the user. Many other notes are made on the index.js code itself and the normal or simon code is commented on the bottom and was used as referenced. 
