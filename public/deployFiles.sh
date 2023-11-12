@@ -1,4 +1,6 @@
 #!/bin/bash
+#test in the file package.json, removed because I want to manually test
+#// "test": "echo \"Error: no test specified\" && exit 1"
 
 while getopts k:h:s: flag
 do

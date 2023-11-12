@@ -1,35 +1,52 @@
+//pull in the express library
 const express = require('express')
+//going to get the app for express
 const app = express()
 const bcrypt = require('bcrypt')
 
+//allow the app the accept json
 app.use(express.json())
 
 const users = []
 
+//creating a route to get all the users. Don't want people to see user information so bycrpyt is needed
 app.get('/users', (req, res) => {
   res.json(users)
 })
 
+//way to create users
 app.post('/users', async (req, res) => {
   try {
+    //this generates a salt or basically if the user uses the same password as another user, its changed slightly at the end
+    //making it harder for people to get in and try stealing information
+    // const salt = await bcrypt.genSalt()
     const hashedPassword = await bcrypt.hash(req.body.password, 10)
+    // console.log(hashedPassword)
+    // const user = { name: req.body.name, password: req.body.password }
+    //bcrypt used to hash the password
     const user = { name: req.body.name, password: hashedPassword }
     users.push(user)
+    //201 = request was successfully fulfilled
     res.status(201).send()
+    // hash(salt + 'password') //can't break people's passwords because of the salt.
   } catch {
+    //500 error response
     res.status(500).send()
   }
 })
 
+//users/login to compare the login and the saved login from the first time you logged in as a user
 app.post('/users/login', async (req, res) => {
   const user = users.find(user => user.name === req.body.name)
   if (user == null) {
     return res.status(400).send('Cannot find user')
   }
   try {
+    //if these are the same comparing the user login and the saved info
     if(await bcrypt.compare(req.body.password, user.password)) {
       res.send('Success')
     } else {
+      //password or user not the same
       res.send('Not Allowed')
     }
   } catch {
