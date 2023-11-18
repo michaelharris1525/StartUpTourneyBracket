@@ -7,7 +7,7 @@ Content-Type: application/json
 
 {
     "name": "Jonathan",
-    "password": "password"
+    "password": "tim"
 }
 
 ###needs to be separated by comments

@@ -1,9 +1,10 @@
-
 //pull in the express library
-const express = require('express')
+const express = require('express');
 //going to get the app for express
-const app = express()
-const bcrypt = require('bcrypt')
+const app = express();
+const DB = require('./database.js');
+
+const bcrypt = require('bcrypt');
 
 const authCookieName = 'token';
 
@@ -14,7 +15,7 @@ const port = process.argv.length > 2 ? process.argv[2] : 3000;
 app.use(express.json());
 
 //tracking authentication
-app.use(cookieParser());
+// app.use(cookieParser());
 
 //Serve up the applications static content
 app.use(express.static('public'));

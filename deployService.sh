@@ -1,4 +1,5 @@
-# ./deployService.sh -k ../../MHTest.pem -h callmejoseph.click -s subdomain
+# ./deployService.sh -k ../../MHTest.pem -h callmejoseph.click -s startup
+#./deployService.sh -k "C:\Users\micha\OneDrive\Desktop\Programming\CS260\MHTest.pem" -h callmejoseph.click -s startup
 while getopts k:h:s: flag
 do
     case "${flag}" in
