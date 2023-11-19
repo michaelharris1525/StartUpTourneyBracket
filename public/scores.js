@@ -1,4 +1,32 @@
 const leaderboard = {};
+function displayScores(scores) {
+  const tableBodyEl = document.querySelector('#scores');
+
+  if (scores.length) {
+    // Update the DOM with the scores
+    for (const [i, score] of scores.entries()) {
+      const positionTdEl = document.createElement('td');
+      const nameTdEl = document.createElement('td');
+      const scoreTdEl = document.createElement('td');
+      const dateTdEl = document.createElement('td');
+
+      positionTdEl.textContent = i + 1;
+      nameTdEl.textContent = score.name;
+      scoreTdEl.textContent = score.score;
+      dateTdEl.textContent = score.date;
+
+      const rowEl = document.createElement('tr');
+      rowEl.appendChild(positionTdEl);
+      rowEl.appendChild(nameTdEl);
+      rowEl.appendChild(scoreTdEl);
+      rowEl.appendChild(dateTdEl);
+
+      tableBodyEl.appendChild(rowEl);
+    }
+  } else {
+    tableBodyEl.innerHTML = '<tr><td colSpan=4>Be the first to score</td></tr>';
+  }
+}
 
 // Inside the event listeners for match results
 if (Result01 === parseInt(Result00.value)) {
@@ -54,6 +82,24 @@ if (Result01 === parseInt(Result00.value)) {
   
     // Update the leaderboard display
     displayLeaderboard();
+  }
+  async function loadScores(){
+    let scores = [];
+    try {
+      const response = await fetch('/api/scores');
+      scores = await response.json();
+
+      //save the scores even if offline
+      localStorage.setItem('scores', JSON.stringify(scores));
+    }
+    catch {
+      const scoresText = localStorage.getItem('scores');
+      if (scoresText) {
+        scores = JSON.parse(scoresText);
+      }
+      displayScores(scores);
+    }
+
   }
 
 

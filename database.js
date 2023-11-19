@@ -16,24 +16,41 @@ async function main() {
     console.log(`Unable to connect to database with ${url} because ${ex.message}`);
     process.exit(1);
   });
-  // Insert a document
+
+  async function addScore(score) {
+    const result = await scoreCollection.insertOne(score);
+    return result;
+  }
+  
+  function getHighScores() {
+    const query = { score: { $gt: 0, $lt: 900 } };
+    const options = {
+      sort: { score: -1 },
+      limit: 10,
+    };
+    const cursor = scoreCollection.find(query, options);
+    return cursor.toArray();
+  }
+  
+  module.exports = { addScore, getHighScores };
+  // Insert login
   const house = {
     name: 'username',
     summary: 'password',
     property_type: 'signup',
-    beds: 1,
+    number: 1,
   };
-  await collection.insertOne(house);
+//   await collection.insertOne(house);
 
-  // Query the documents
-  const query = { property_type: 'signup', beds: { $lt: 2 } };
-  const options = {
-    sort: { score: -1 },
-    limit: 10,
-  };
+//   // Query the documents
+//   const query = { property_type: 'signup', number: { $lt: 2 } };
+//   const options = {
+//     sort: { house: -1 },
+//     limit: 10,
+//   };
 
-  const cursor = collection.find(query, options);
-  const rentals = await cursor.toArray();
-  rentals.forEach((i) => console.log(i));
+//   const cursor = collection.find(query, options);
+//   const rentals = await cursor.toArray();
+//   rentals.forEach((i) => console.log(i));
 }
 main().catch(console.error);
