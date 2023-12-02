@@ -33,3 +33,6 @@ Able to receive request by using both app and requests. Using Bcrypt to have mor
 
 (REQUIRED START UP DB)
 .gitignore to prevent information from getting leaked. Added a database.js file, and a Dbconfig.json file that contains the info needed to connect and get the cluster. So the database was created based off of the code that made from the assignment, unfortunately i do not know exactly what kind of data i want in my database besides login info, so i'm waiting to see if that's what I need to put in my database and keep the userinfo a secret. Once that is resolved i'll know how and what to keep secret in the .gitignore file. 
+
+(REQUIRED Login)
+added bcrypt to hash passwords for the users to login and each new pass word or user should get a new token key based on how cookie-parser works. New file changes to index and database are created. As well as a new installation of mongoose. There is something strange going on in my node_modules. There is 3 files that are balneked out that are important. fix soon.

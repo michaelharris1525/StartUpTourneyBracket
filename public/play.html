@@ -40,11 +40,24 @@
 
     <!-- bootstrap: Chat Box -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-
+    <!-- websocket chat improved -->
+    <div class="name">
+        <fieldset id="name-controls">
+          <legend>My Name</legend>
+          <input id="my-name" type="text" />
+        </fieldset>
+      </div>
+  
+      <fieldset id="chat-controls" disabled>
+        <legend>Chat</legend>
+        <input id="new-msg" type="text" />
+        <button onclick="sendMessage()">Send</button>
+      </fieldset>
+      <div id="chat-text"></div>
 
         
     <!-- Chat box ----------------------------------------------------------------------------------------------------->
-    <div class="container">
+    <!-- <div class="container">
         <button class="btn btn-info btn-chat" type="button" onclick="openChat()">Chat</button>
     
         <div class="chatbox" id="chatbox">
@@ -69,7 +82,7 @@
         
               alert(text);
             });
-          </script>
+          </script> -->
       <br />
       <br />
       <br />
@@ -436,4 +449,6 @@
       <a href="https://github.com/webprogramming260/simon-html">GitHub</a>
     </footer>
     <script defer src="play.js"></script>
+    <script defer src="chatClient.js"></script>
+    <script defer src="websocket.js"></script>
 </html>
