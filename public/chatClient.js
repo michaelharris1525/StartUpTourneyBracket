@@ -17,8 +17,8 @@ socket.onmessage = async (event) => {
 // If the webSocket is closed then disable the interface
 socket.onclose = (event) => {
   appendMsg('system', 'websocket', 'disconnected');
-  document.querySelector('#name-controls').disabled = true;
-  document.querySelector('#chat-controls').disabled = true;
+  document.querySelector('#name-controls').disabled = false;
+  document.querySelector('#chat-controls').disabled = false;
 };
 
 // Send a message over the webSocket
