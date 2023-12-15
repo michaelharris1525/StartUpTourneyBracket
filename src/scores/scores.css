@@ -20,6 +20,10 @@ header {
   th {
     height: 100px;
   }
+  tbody{
+    color: #000000;
+    font-weight: bold;
+  }
 /* th, td{
     border-bottom: 1px solid #ddd;
 } */

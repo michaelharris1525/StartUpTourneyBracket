@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
-import { Play } from './play/play';
-import { Scores } from './scores/scores';
-import { About } from './about/about';
+import { Play } from './play/play.jsx';
+import { Scores } from './scores/scores.jsx';
+import { About } from './about/about.jsx';
 // import { AuthState } from './login/authState';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
-import { Login } from './login/login';
+import { Login } from './login/login.jsx';
 
 export default function App() {
     return (
@@ -50,7 +50,7 @@ export default function App() {
             <span className="text-reset">Michael Harris</span>
             <a className="text-reset" href="https://github.com/webprogramming260/simon-websocket">
                 Source
-                </a>
+            </a>
         </div>
         </footer>
     </div>

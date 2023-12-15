@@ -16,9 +16,16 @@
      color: rgb(0, 0, 0);		 
   }	  
 
-body{
+div{
     margin: 5px;
     background-color: rgb(244, 255, 126);
+}
+.number {
+    color: black
+}
+
+.chat {
+    color: black
 }
 
 .Container{
@@ -122,5 +129,14 @@ span{
 }
 .footer {
     color: blue
+}
+.title {
+    color: black
+}
+.name {
+    color: black
+}
+.Name_Forward{
+    color: black
 }
 /* */

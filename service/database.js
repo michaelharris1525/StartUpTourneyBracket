@@ -1,5 +1,13 @@
 const { MongoClient } = require('mongodb');
-const config = require('../dbConfig.json');
+const config = require('./dbConfig.json');
+const bcrypt = require('bcrypt');
+const uuid = require('uuid');
+
+const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostname}`;
+const client = new MongoClient(url);
+const db = client.db('simon');
+const userCollection = db.collection('user');
+const scoreCollection = db.collection('score');
 
 async function main() {
   // Connect to the database cluster
@@ -7,6 +15,11 @@ async function main() {
   const client = new MongoClient(url);
   const db = client.db('rental');
   const collection = db.collection('house');
+
+  async function getUserByToken(token) {
+    const user = await scoreCollection.findOne({ token: token });
+    return user;
+  }
 
   // Test that you can connect to the database
   (async function testConnection() {
@@ -30,9 +43,10 @@ async function main() {
     };
     const cursor = scoreCollection.find(query, options);
     return cursor.toArray();
+
   }
   
-  module.exports = { addScore, getHighScores };
+  module.exports = { addScore, getHighScores, getUserByToken };
   // Insert login
   const house = {
     name: 'username',

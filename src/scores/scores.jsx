@@ -1,119 +1,61 @@
 import React from 'react';
+
 import './scores.css';
-// import { Unauthenticated } from './unauthenticated';
-// import { Authenticated } from './authenticated';
-// import { AuthState } from './authState';
 
 export function Scores() {
-    return (
-    <div>
-    <header>
-      <h1>TOURNEY BRACKET<sup>&reg;</sup></h1>
+  const [scores, setScores] = React.useState([]);
 
-      <nav>
-        <menu>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="play.html">Play</a></li>
-          <li><a href="scores.html">Scores</a></li>
-          <li><a href="about.html">About</a></li>
-        </menu>
-      </nav>
+  // Demonstrates calling a service asynchronously so that
+  // React can properly update state objects with the results.
+  React.useEffect(() => {
+    fetch('/api/scores')
+      .then((response) => response.json())
+      .then((scores) => {
+        setScores(scores);
+        localStorage.setItem('scores', JSON.stringify(scores));
+      })
+      .catch(() => {
+        const scoresText = localStorage.getItem('scores');
+        if (scoresText) {
+          setScores(JSON.parse(scoresText));
+        }
+      });
+  }, []);
 
-      <hr />
-    </header>
+  // Demonstrates rendering an array with React
+  const scoreRows = [];
+  if (scores.length) {
+    for (const [i, score] of scores.entries()) {
+      scoreRows.push(
+        <tr key={i}>
+          <td>{i}</td>
+          <td>{score.name.split('@')[0]}</td>
+          <td>{score.score}</td>
+          <td>{score.date}</td>
+        </tr>
+      );
+    }
+  } else {
+    scoreRows.push(
+      <tr key='0'>
+        <td colSpan='6'>Challenge the Pantheon</td>
+      </tr>
+    );
+  }
 
-    <main>
-      <table>
-        <thead>
+  return (
+    <main className='container-fluid bg-secondary text-center'>
+      <table className='table table-warning table-striped-columns'>
+        <thead className='table-dark'>
           <tr>
             <th>#</th>
-            <th>Losers</th>
+            <th>Player</th>
             <th>Wins</th>
-            <th>Placing</th>
+            <th>Placement</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <div><td>John Arbuckel</td></div>
-            <td>0</td>
-            <td>8th place</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Odie ferous</td>
-            <td>1</td>
-            <td>7th place</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Gunter Spears</td>
-            <td>3</td>
-            <td>6th place</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>ligma ballson</td>
-            <td>3</td>
-            <td>5th place</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Shaq Fu</td>
-            <td>3</td>
-            <td>4th place</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Tim Allen</td>
-            <td>3</td>
-            <td>3rd place</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Johnny Bravo</td>
-            <td>3</td>
-            <td>2nd place</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Tim Erkel</td>
-            <td>3</td>
-            <td>1st place</td>
-          </tr>
-        </tbody>
+        <tbody id='scores'>{scoreRows}</tbody>
       </table>
     </main>
-
-    <footer>
-      <hr />
-      <span class="text-reset">Author Name(s)</span>
-      <br />
-      <a href="https://github.com/webprogramming260/simon-html">GitHub</a>
-    </footer>
-    <script src="scores.js"></script>
-  </div>
-    );
+  );
 }
-
-
-// export function Login({ userName, authState, onAuthChange }) {
-//   return (
-//     <main className='container-fluid bg-secondary text-center'>
-//       <div>
-//         {authState !== AuthState.Unknown && <h1>Welcome to Simon</h1>}
-//         {authState === AuthState.Authenticated && (
-//           <Authenticated userName={userName} onLogout={() => onAuthChange(userName, AuthState.Unauthenticated)} />
-//         )}
-//         {authState === AuthState.Unauthenticated && (
-//           <Unauthenticated
-//             userName={userName}
-//             onLogin={(loginUserName) => {
-//               onAuthChange(loginUserName, AuthState.Authenticated);
-//             }}
-//           />
-//         )}
-//       </div>
-//     </main>
-//   );
-// }

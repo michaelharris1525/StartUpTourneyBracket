@@ -1,35 +1,32 @@
-/////////////////////////////////////////////////////////////////////////////////////////////////////
-//pull in the express library
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcrypt');
 const express = require('express');
-
-//going to get the app for express
 const app = express();
 const DB = require('./database.js');
+const { peerProxy } = require('./peerProxy.js');
 
 const authCookieName = 'token';
 
-// the service port may be set on the command line
+// The service port may be set on the command line
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
 
-//allow the app the accept json
+// JSON body parsing using built-in middleware
 app.use(express.json());
 
-//tracking authentication
+// Use the cookie parser middleware for tracking authentication tokens
 app.use(cookieParser());
 
-//Serve up the applications static content
+// Serve up the applications static content
 app.use(express.static('public'));
 
-//Trust headers taht are forwarded to know IP Adresses
+// Trust headers that are forwarded from the proxy so we can determine IP addresses
 app.set('trust proxy', true);
 
-//Router for Service Endpoints
-var apiRouter = express.Router();
-app.use('/api', apiRouter);
+// Router for service endpoints
+const apiRouter = express.Router();
+app.use(`/api`, apiRouter);
 
-//createAuth Token for a new User
+// CreateAuth token for a new user
 apiRouter.post('/auth/create', async (req, res) => {
   if (await DB.getUser(req.body.email)) {
     res.status(409).send({ msg: 'Existing user' });
@@ -76,11 +73,11 @@ apiRouter.get('/user/:email', async (req, res) => {
 });
 
 // secureApiRouter verifies credentials for endpoints
-var secureApiRouter = express.Router();
+const secureApiRouter = express.Router();
 apiRouter.use(secureApiRouter);
 
 secureApiRouter.use(async (req, res, next) => {
-  authToken = req.cookies[authCookieName];
+  const authToken = req.cookies[authCookieName];
   const user = await DB.getUserByToken(authToken);
   if (user) {
     next();
@@ -88,6 +85,7 @@ secureApiRouter.use(async (req, res, next) => {
     res.status(401).send({ msg: 'Unauthorized' });
   }
 });
+
 // GetScores
 secureApiRouter.get('/scores', async (req, res) => {
   const scores = await DB.getHighScores();
@@ -121,6 +119,8 @@ function setAuthCookie(res, authToken) {
   });
 }
 
-app.listen(port, () => {
+const httpService = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+
+peerProxy(httpService);

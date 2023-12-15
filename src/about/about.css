@@ -1,5 +1,11 @@
+.about{
+  color: black
+}
 div p {
     font-size: 50px;
+}
+.textbox{
+  color: black
 }
 .aboutimage{
     width: 500px;

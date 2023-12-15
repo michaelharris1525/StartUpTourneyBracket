@@ -7,37 +7,37 @@ import './about.css';
 
 export function About() {
     return (
-        <div>
+    <div className="about">
     <header>
       <h1>TOURNEY BRACKET<sup>&reg;</sup></h1>
 
-      <nav>
+      {/* <nav>
         <menu>
           <li><a href="index.html">Home</a></li>
           <li><a href="play.html">Play</a></li>
           <li><a href="scores.html">Scores</a></li>
           <li><a href="about.html">About</a></li>
         </menu>
-      </nav>
+      </nav> */}
 
       <hr />
     </header>
 
     <div>
-      {/* <img class="aboutimage" src="kedyfsjq.png" alt="aboutimage"> */}
-      {/* <!-- <div id="picture" class="picture-box"><img width="400px" src="https://tse4.mm.bing.net/th?id=OIP.-BX1eQUVLb9DtC5ktPCFlAHaFG&pid=Api&P=0&h=220" alt="random" /></div> --> */}
-      <p>
+      {/* <img className="aboutimage" src="kedyfsjq.png" alt="aboutimage"> */}
+      {/* <!-- <div id="picture" className="picture-box"><img width="400px" src="https://tse4.mm.bing.net/th?id=OIP.-BX1eQUVLb9DtC5ktPCFlAHaFG&pid=Api&P=0&h=220" alt="random" /></div> --> */}
+      <p className="textbox">
         IT'S TIME TO SEE WHO IS THE VERY BEST, LIKE NO ONE EVER WAS
       </p>
 
-      <p>
+      <p className="textbox">
         SIGN UP TO SEE IF YOU'RE WORTHY TO BE CROWNED CHAMPION
       </p>
     </div>
 
     <footer>
       <hr />
-      <span class="text-reset">Author Name(s)</span>
+      {/* <span className="text-reset">Author Name(s)</span> */}
       <br />
       <a href="https://github.com/michaelharris1525/StartUpTourneyBracket.git">GitHub</a>
     </footer>
@@ -48,7 +48,7 @@ export function About() {
 
 // export function Login({ userName, authState, onAuthChange }) {
 //   return (
-//     <main className='container-fluid bg-secondary text-center'>
+//     <main classNameName='container-fluid bg-secondary text-center'>
 //       <div>
 //         {authState !== AuthState.Unknown && <h1>Welcome to Simon</h1>}
 //         {authState === AuthState.Authenticated && (

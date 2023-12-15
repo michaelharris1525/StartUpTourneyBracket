@@ -4,6 +4,10 @@
     flex-direction: column;
     min-width: 375px;
   }
+
+  .container-fluid{
+    color:black 
+  }
   
   header {
     flex: 0 80px;
@@ -79,6 +83,14 @@
     main {
       flex: 1 100vh;
     }
+  }
+
+  .navbar-brand{
+    color: black
+  }
+
+  .nav-link{
+    color: black
   }
 
 
