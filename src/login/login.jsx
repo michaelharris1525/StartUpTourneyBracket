@@ -6,9 +6,25 @@ import React from 'react';
 
 export function Login() {
     return (
-        <main className='container-fluid bg-secondary text-center'>
-            <div>login displayed here</div>
-        </main>
+        <main>
+      <image> 
+        
+      </image>
+      <div> 
+      <h1>Welcome</h1>
+      <p>Login to play</p>
+      </div>
+      <form method="get" action="play.html">
+        <label for="name">Username</label>
+        <input type="text" id="name" placeholder="Your name here" />
+        <form method="get" action="play.html">
+          <label for="name">Password</label>
+          <input type="text" id="name" placeholder="Password" />
+          {/* <!-- error right here --> */}
+          <button type="submit" class="btn btn-primary" onclick="login()">Login</button>
+        </form>
+      </form>
+    </main>
     );
 }
 
